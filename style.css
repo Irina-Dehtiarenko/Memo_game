@@ -17,6 +17,52 @@ div {
 	border: 4px solid white;
 }
 
+
+.red {
+	background-color: red;
+}
+
+.blue {
+	background-color: blue;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+.green {
+	background-color: green;
+}
+
+.brown {
+	background-color: brown;
+}
+
+.gray {
+	background-color: gray;
+}
+
+.violet {
+	background-color: violet;
+}
+
+.lightgreen {
+	background-color: lightgreen;
+}
+
+.cadetblue {
+	background-color: cadetblue;
+}
+
+.off {
+	background-color: #eee;
+}
+
+.hidden {
+	background-color: #000;
+}
+
+
 @media(orientation:portrait) {
 	div {
 		width: 30%;
