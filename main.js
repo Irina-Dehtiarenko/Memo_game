@@ -1,9 +1,14 @@
 const colors = ['red', 'red', 'blue', 'blue', 'yellow', 'yellow', 'green', 'green', 'brown', 'brown', 'gray', 'gray', 'violet', 'violet', 'lightgreen', 'lightgreen', 'cadetblue', 'cadetblue']
 
-let div = [...document.querySelectorAll('div')]//żeby ta zmienna była prawdziwą tablicą
+let divs = [...document.querySelectorAll('div')]//żeby ta zmienna była prawdziwą tablicą
 
 let activeCard = ''
 let activeCards = []
+
+const gamePairs = colors.length / 2
+let gameResult = 0
+const startTime = new Date().getTime();// to jest objekt, sama Date - to pokazuje aktualny czas i cała date, ale metoda - getTime() - konwertuje to do milisekund
+console.log(startTime)
 
 const showColor = (e) => {
 	e.target.classList.remove('hidden')
@@ -16,10 +21,9 @@ const showColor = (e) => {
 		activeCards.push(activeCard)
 		return
 	} else {
-		div.forEach(divColor => divColor.removeEventListener('click', showColor))
+		divs.forEach(divColor => divColor.removeEventListener('click', showColor))
 
 		activeCards.push(activeCard)
-		console.log(activeCards)
 	}
 
 	setTimeout(() => {
@@ -27,6 +31,19 @@ const showColor = (e) => {
 		if (activeCards[0].className === activeCards[1].className) {
 			console.log('Win')
 			activeCards.forEach(element => element.classList.add('off'))
+
+
+			/* Na tym skończyłam i mam problem.... nie wiem jak połączyć filter i klasę */
+
+			divs = divs.filter(div => {
+				div.classList.contains(!("off"))
+			})
+
+			console.log(divs)
+
+
+
+
 
 		} else {
 			console.log('Lose')
@@ -36,10 +53,8 @@ const showColor = (e) => {
 		activeCard = ''
 		activeCards = []
 
-		console.log(activeCard)
-		console.log(activeCards.length)
 
-		div.forEach(divColor => divColor.addEventListener('click', showColor))
+		divs.forEach(divColor => divColor.addEventListener('click', showColor))
 
 	}, 1000)
 
@@ -47,7 +62,7 @@ const showColor = (e) => {
 
 const init = () => {
 
-	div.forEach(divColor => {
+	divs.forEach(divColor => {
 		const index = Math.floor(Math.random() * colors.length)
 		divColor.classList.add(colors[index])
 		colors.splice(index, 1)
@@ -55,7 +70,7 @@ const init = () => {
 
 
 	setTimeout(() => {
-		div.forEach(divColor => {
+		divs.forEach(divColor => {
 			divColor.classList.add('hidden')
 
 			divColor.addEventListener('click', showColor)
