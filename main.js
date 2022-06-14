@@ -2,6 +2,30 @@ const colors = ['red', 'red', 'blue', 'blue', 'yellow', 'yellow', 'green', 'gree
 
 let div = [...document.querySelectorAll('div')]//żeby ta zmienna była prawdziwą tablicą
 
+let activeCard = ''
+let activeCards = []
+
+const showColor = (e) => {
+	e.target.classList.remove('hidden')
+	activeCard = e.target
+	if (activeCard === activeCards[0]) {
+		return
+	}
+
+	if (activeCards.length === 0) {
+		activeCards.push(activeCard)
+		return
+	} else {
+		div.forEach(divColor => divColor.removeEventListener('click', showColor))
+
+		activeCards.push(activeCard)
+		console.log(activeCards)
+	}
+
+
+
+}
+
 const init = () => {
 
 	div.forEach(divColor => {
@@ -14,8 +38,10 @@ const init = () => {
 	setTimeout(() => {
 		div.forEach(divColor => {
 			divColor.classList.add('hidden')
+
+			divColor.addEventListener('click', showColor)
 		})
-		//tutaj będzie nasłuchiwanie na lkiknięcie, na tym skończono
+
 	}, 1500)
 
 }
