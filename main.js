@@ -22,7 +22,26 @@ const showColor = (e) => {
 		console.log(activeCards)
 	}
 
+	setTimeout(() => {
 
+		if (activeCards[0].className === activeCards[1].className) {
+			console.log('Win')
+			activeCards.forEach(element => element.classList.add('off'))
+
+		} else {
+			console.log('Lose')
+
+			activeCards.forEach(element => element.classList.add('hidden'))
+		}
+		activeCard = ''
+		activeCards = []
+
+		console.log(activeCard)
+		console.log(activeCards.length)
+
+		div.forEach(divColor => divColor.addEventListener('click', showColor))
+
+	}, 1000)
 
 }
 
