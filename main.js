@@ -33,11 +33,25 @@ const showColor = (e) => {
 			activeCards.forEach(element => element.classList.add('off'))
 
 
-
+			//FUNKCJA W METODZIE FILTER()M= MUSI COŚ ZWRACAĆ, CZYLI 'RETURN'(ale jeżeli napisać jednoliniowo i bez klamrek, to automatycznie to zwróci nasz kod):
+			// divs = divs.filter(div => !div.classList.contains("off"))
 			divs = divs.filter(div => {
 				return !div.classList.contains("off")
 			})
 
+			gameResult++
+
+			console.log(gameResult)
+			if (gameResult === gamePairs) {
+				console.log('Wygrana')
+				const endTime = new Date().getTime()
+
+				const gameTime = Math.round((endTime - startTime) / 1000)
+
+				alert(`Wygraleś! Twój czas to ${gameTime} sekund(y)`)
+
+				location.reload()//odświeża stronę - graj od początku
+			}
 
 		} else {
 			console.log('Lose')
