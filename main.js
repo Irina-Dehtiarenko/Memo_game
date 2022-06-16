@@ -33,16 +33,10 @@ const showColor = (e) => {
 			activeCards.forEach(element => element.classList.add('off'))
 
 
-			/* Na tym skończyłam i mam problem.... nie wiem jak połączyć filter i klasę */
 
 			divs = divs.filter(div => {
-				div.classList.contains(!("off"))
+				return !div.classList.contains("off")
 			})
-
-			console.log(divs)
-
-
-
 
 
 		} else {
